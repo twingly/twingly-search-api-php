@@ -3,6 +3,14 @@
 namespace Twingly;
 
 class Parser {
+    /**
+     * Parse an API response body.
+     *
+     * @param string $document containing an API response XML text
+     * @return Result
+     * @throws AuthException
+     * @throws ServerException
+     */
     public function parse($document) {
         $doc = simplexml_load_string($document);
 

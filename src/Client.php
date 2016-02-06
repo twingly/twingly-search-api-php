@@ -4,6 +4,11 @@ namespace Twingly;
 
 require 'vendor/autoload.php';
 
+/**
+ * Twingly Search API client
+ * 
+ * @package Twingly
+ */
 class Client {
     const VERSION = '1.0.0';
     const BASE_URL = 'https://api.twingly.com';
@@ -49,16 +54,34 @@ class Client {
         ]);
     }
 
+    /**
+     * Returns a new Query object connected to this client
+     *
+     * @return Query
+     */
     public function query() {
         return new Query($this);
     }
 
+    /**
+     * Executes the given Query and returns the result
+     *
+     * @param Query $query the query to be executed
+     *
+     * @return Result
+     * @throws AuthException
+     * @throws QueryException
+     * @throws ServerException
+     */
     public function execute_query($query) {
         $response_body = $this->_get_response($query)->getBody();
         $parser = new Parser();
         return $parser->parse($response_body);
     }
 
+    /**
+     * @return string API endpoint URL
+     */
     public function endpoint_url() {
         return sprintf('%s%s', Client::BASE_URL, Client::SEARCH_PATH);
     }
