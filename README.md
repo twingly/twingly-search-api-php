@@ -6,7 +6,7 @@ A PHP library for Twingly's Search API (previously known as Analytics API). Twin
 
 ## Installation
 
-Install via Composer
+Install via Composer 
 
 ```shell
 php composer.phar require twingly/twingly-search-api-php
