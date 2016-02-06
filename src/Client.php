@@ -6,7 +6,7 @@ require 'vendor/autoload.php';
 
 /**
  * Twingly Search API client
- * 
+ *
  * @package Twingly
  */
 class Client {

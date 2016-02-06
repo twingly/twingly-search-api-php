@@ -1,6 +1,6 @@
 {
   "name": "bearburger/twingly-search-api-php",
-  "description": "Status.io API for PHP",
+  "description": "Twingly Search API for PHP",
   "license": "MIT",
   "keywords": [
     "twingly",
