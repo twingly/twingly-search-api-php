@@ -1,0 +1,5 @@
+vendor
+.idea
+phpunit.phar
+twingly-search-api-php.iml
+composer.lock

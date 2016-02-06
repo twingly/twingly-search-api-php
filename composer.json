@@ -1,0 +1,29 @@
+{
+  "name": "bearburger/twingly-search-api-php",
+  "description": "Status.io API for PHP",
+  "license": "MIT",
+  "keywords": [
+    "twingly",
+    "twingly.com",
+    "api"
+  ],
+  "authors": [
+    {
+      "name": "Roman Ragimoff",
+      "email": "roma.ragimoff@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.6.0",
+    "guzzlehttp/guzzle": "~6"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "5.1.*",
+    "php-vcr/php-vcr": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "Twingly\\": "src"
+    }
+  }
+}
