@@ -17,7 +17,7 @@ php composer.phar require twingly/twingly-search-api-php
 ```php
 use Twingly\Client;
 
-$client = new Client()
+$client = new Client();
 
 $query = $client->query();
 $query->pattern = 'github page-size:10';
