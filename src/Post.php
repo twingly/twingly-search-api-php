@@ -65,8 +65,8 @@ class Post {
         $this->title = (string)$params['title'];
         $this->summary = (string)$params['summary'];
         $this->language_code = (string)$params['languageCode'];
-        $this->published = \DateTime::createFromFormat('Y-m-d H:i:sZ', $params['published']);
-        $this->indexed = \DateTime::createFromFormat('Y-m-d H:i:sZ', $params['indexed']);
+        $this->published = \DateTime::createFromFormat('Y-m-d H:i:sZ', $params['published'], new \DateTimeZone('UTC'));
+        $this->indexed = \DateTime::createFromFormat('Y-m-d H:i:sZ', $params['indexed'], new \DateTimeZone('UTC'));
         $this->blog_url = (string)$params['blogUrl'];
         $this->blog_name = (string)$params['blogName'];
         $this->authority = (int)$params['authority'];

@@ -5,12 +5,12 @@ require('vendor/autoload.php');
 use Twingly\Client;
 
 class SearchPostStream {
-    public function __construct($keyword, $language = 'sv')
+    public function __construct($keyword, $language = 'en')
     {
         $this->client = new Client(false, 'MyCompany/1.0');
         $this->query = $this->client->query();
         $this->query->pattern = sprintf('sort-order:asc sort:published %s', $keyword);
-        $this->query->start_time = (new \DateTime())->sub(new \DateInterval('P5D'));
+        $this->query->start_time = (new \DateTime('now', new \DateTimeZone('UTC')))->sub(new \DateInterval('P5D'));
         $this->query->language = $language;
     }
 
