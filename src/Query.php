@@ -83,7 +83,7 @@ class Query {
 
     function _ts() {
         if($this->start_time instanceof \DateTime) {
-            return $this->start_time->format('Y-m-d H:i:s');
+            return $this->start_time->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s');
         } else {
             return '';
         }
@@ -91,7 +91,7 @@ class Query {
 
     function _tsTo() {
         if($this->end_time instanceof \DateTime) {
-            return $this->end_time->format('Y-m-d H:i:s');
+            return $this->end_time->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s');
         } else {
             return '';
         }
