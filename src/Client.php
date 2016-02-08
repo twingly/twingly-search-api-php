@@ -27,8 +27,6 @@ class Client {
      */
     function __construct($api_key = false, $user_agent = false)
     {
-        date_default_timezone_set("UTC");
-
         if(!$api_key) {
             $api_key = $this->_env_api_key();
         }

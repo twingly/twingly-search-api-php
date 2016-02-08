@@ -83,7 +83,7 @@ class Query {
 
     function _ts() {
         if($this->start_time instanceof \DateTime) {
-            return date('Y-m-d H:i:s', $this->start_time->getTimestamp());
+            return $this->start_time->format('Y-m-d H:i:s');
         } else {
             return '';
         }
@@ -91,7 +91,7 @@ class Query {
 
     function _tsTo() {
         if($this->end_time instanceof \DateTime) {
-            return date('Y-m-d H:i:s', $this->end_time->getTimestamp());
+            return $this->end_time->format('Y-m-d H:i:s');
         } else {
             return '';
         }
