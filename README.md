@@ -1,6 +1,6 @@
 # Twingly Search API PHP
 
-[![Build Status](https://travis-ci.org/bearburger/twingly-search-api-php.png?branch=master)](https://travis-ci.org/bearburger/twingly-search-api-php)
+[![Build Status](https://travis-ci.org/twingly/twingly-search-api-php.png?branch=master)](https://travis-ci.org/bearburger/twingly-search-api-php)
 
 A PHP library for Twingly's Search API (previously known as Analytics API). Twingly is a blog search service that provides a searchable API known as [Twingly Search API](https://developer.twingly.com/resources/search/).
 

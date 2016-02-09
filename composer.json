@@ -1,5 +1,5 @@
 {
-  "name": "bearburger/twingly-search-api-php",
+  "name": "twingly/twingly-search-api-php",
   "description": "Twingly Search API for PHP",
   "license": "MIT",
   "keywords": [
@@ -9,8 +9,8 @@
   ],
   "authors": [
     {
-      "name": "Roman Ragimoff",
-      "email": "roma.ragimoff@gmail.com"
+      "name": "Twingly AB",
+      "email": "support@twingly.com"
     }
   ],
   "require": {
