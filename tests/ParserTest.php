@@ -76,21 +76,3 @@ class ParserTest extends \PHPUnit_Framework_TestCase {
         }
     }
 }
-
-/*
- * from __future__ import unicode_literals
-import unittest
-
-import twingly_search
-
-class ParserTest(unittest.TestCase):
-
-
-
-    def test_with_undefined_error_result(self):
-        with self.assertRaises(twingly_search.TwinglyServerException):
-            data = open("./tests/fixtures/non_xml_result.xml", 'r').read()
-            if hasattr(data, 'decode'):
-                data = data.decode("utf-8")
-            r = twingly_search.Parser().parse(data)
- */
