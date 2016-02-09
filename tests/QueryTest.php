@@ -85,20 +85,6 @@ class QueryTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals($q->request_parameters()['tsTo'], '2012-12-28 09:01:22');
     }
 
-    function testQueryShouldConvertAddStartTime(){
-        $q = $this->client->query();
-        $q->pattern = 'spotify';
-        $q->start_time = \DateTime::createFromFormat('Y-m-d H:i:s', '2012-12-28 09:01:22', new \DateTimeZone('Europe/Moscow'));
-        $this->assertEquals($q->request_parameters()['ts'], '2012-12-28 05:01:22');
-    }
-
-    function testQueryShouldConvertEndTime(){
-        $q = $this->client->query();
-        $q->pattern = 'spotify';
-        $q->end_time = \DateTime::createFromFormat('Y-m-d H:i:s', '2012-12-28 09:01:22', new \DateTimeZone('Europe/Moscow'));
-        $this->assertEquals($q->request_parameters()['tsTo'], '2012-12-28 05:01:22');
-    }
-
     function testQueryShouldEncodeUrlParameters() {
         $q = $this->client->query();
         $q->pattern = 'spotify';
