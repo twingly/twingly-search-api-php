@@ -64,6 +64,10 @@ Run tests:
 
     ./vendor/bin/phpunit
 
+Run examples:
+
+    TWINGLY_SEARCH_KEY=<KEY> php examples/hello_world.php
+
 [Composer]: https://getcomposer.org/
 
 ## License
