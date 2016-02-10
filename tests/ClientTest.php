@@ -21,7 +21,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase {
 
     public function testNew() {
         $c = new Client('test-key');
-        $this->assertEquals($c->_user_agent, sprintf(Client::DEFAULT_USER_AGENT, Client::VERSION));
+        $this->assertEquals($c->user_agent, sprintf(Client::DEFAULT_USER_AGENT, Client::VERSION));
     }
 
     public function testWithoutApiKeyAsParameter() {
@@ -44,7 +44,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase {
 
     public function testWithOptionalUserAgentGiven() {
         $c = new Client(false, 'Test User-Agent');
-        $this->assertEquals($c->_user_agent, 'Test User-Agent');
+        $this->assertEquals($c->user_agent, 'Test User-Agent');
     }
 
     public function testQuery() {
