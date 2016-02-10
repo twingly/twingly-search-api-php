@@ -9,11 +9,11 @@ namespace Twingly;
  */
 class Query {
     /**
-     * @var string pattern the search query
+     * @var string the search query
      */
     public $pattern = '';
     /**
-     * @var string language which language to restrict the query to
+     * @var string which language to restrict the query to
      */
     public $language = '';
     /**
