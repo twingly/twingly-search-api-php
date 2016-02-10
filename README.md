@@ -45,7 +45,7 @@ To learn more about the capabilities of the API, please read the [Twingly Search
 
 * API key, contact sales@twingly.com via [twingly.com](https://www.twingly.com/try-for-free/) to get one
 * PHP
-  * PHP 5.6, 7.0, HHVM
+  * PHP 5.6, 7.0
   * Guzzle
 
 ## Development
