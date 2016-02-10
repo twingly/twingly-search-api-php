@@ -75,13 +75,13 @@ class Query {
             'key' => $this->client->api_key,
             'searchpattern' => $this->pattern,
             'documentlang' => $this->language,
-            'ts' => $this->_ts(),
-            'tsTo' => $this->_tsTo(),
+            'ts' => $this->ts(),
+            'tsTo' => $this->tsTo(),
             'xmloutputversion' => 2
         ];
     }
 
-    function _ts() {
+    function ts() {
         if($this->start_time instanceof \DateTime) {
             return $this->start_time->format('Y-m-d H:i:s');
         } else {
@@ -89,7 +89,7 @@ class Query {
         }
     }
 
-    function _tsTo() {
+    function tsTo() {
         if($this->end_time instanceof \DateTime) {
             return $this->end_time->format('Y-m-d H:i:s');
         } else {

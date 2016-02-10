@@ -28,11 +28,11 @@ class Client {
     function __construct($api_key = false, $user_agent = false)
     {
         if(!$api_key) {
-            $api_key = $this->_env_api_key();
+            $api_key = $this->env_api_key();
         }
 
         if(!$api_key) {
-            $this->_api_key_missing();
+            $this->api_key_missing();
         }
 
         $this->api_key = $api_key;
@@ -73,7 +73,7 @@ class Client {
      * @throws ServerException
      */
     public function execute_query($query) {
-        $response_body = $this->_get_response($query)->getBody();
+        $response_body = $this->get_response($query)->getBody();
         $parser = new Parser();
         return $parser->parse($response_body);
     }
@@ -85,11 +85,11 @@ class Client {
         return sprintf('%s%s', Client::BASE_URL, Client::SEARCH_PATH);
     }
 
-    private function _env_api_key() {
+    private function env_api_key() {
         return getenv('TWINGLY_SEARCH_KEY');
     }
 
-    private function _get_response($query) {
+    private function get_response($query) {
         $response = $this->guzzle->get($query->url());
         if(($response->getStatusCode() >= 200)&&($response->getStatusCode() < 300)) {
             return $response;
@@ -102,7 +102,7 @@ class Client {
         }
     }
 
-    private function _api_key_missing() {
+    private function api_key_missing() {
         throw new AuthException('No API key has been provided.');
     }
 }

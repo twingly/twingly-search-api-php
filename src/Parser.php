@@ -28,10 +28,10 @@ class Parser {
             }
         }
 
-        return $this->_create_result($doc);
+        return $this->create_result($doc);
     }
 
-    private function _create_result($data_node) {
+    private function create_result($data_node) {
         $result = new Result();
 
         $result->number_of_matches_returned = (int)$data_node->attributes()->numberOfMatchesReturned;
@@ -41,20 +41,20 @@ class Parser {
         $result->posts = [];
 
         foreach($data_node->xpath('//post[@contentType="blog"]') as $p) {
-            $result->posts[] = $this->_parse_post($p);
+            $result->posts[] = $this->parse_post($p);
         }
 
         return $result;
     }
 
-    private function _parse_post($element) {
+    private function parse_post($element) {
         $post_params = [
             'tags' => []
         ];
 
         foreach($element->children() as $child) {
             if($child->getName() == 'tags') {
-                $post_params[$child->getName()] = $this->_parse_tags($child);
+                $post_params[$child->getName()] = $this->parse_tags($child);
             } else {
                 $post_params[$child->getName()] = (string)$child;
             }
@@ -65,7 +65,7 @@ class Parser {
         return $post;
     }
 
-    private function _parse_tags($element) {
+    private function parse_tags($element) {
         $tags = [];
         foreach($element->xpath('//tag') as $tag) {
             $tags[] = (string)$tag;
@@ -73,12 +73,12 @@ class Parser {
         return $tags;
     }
 
-    private function _handle_failure($failure) {
+    private function handle_failure($failure) {
         $ex = new \Twingly\Exception();
         $ex->from_api_response_message($failure);
     }
 
-    private function _handle_non_xml_document($document){
+    private function handle_non_xml_document($document){
         $response_text = (string)$document->xpath('//text()')[0];
         throw new \Twingly\ServerException($response_text);
     }
