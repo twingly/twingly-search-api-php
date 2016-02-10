@@ -9,7 +9,7 @@ namespace Twingly;
  */
 class Result {
     /**
-     * @var int number of Post the query returned
+     * @var int number of posts the query returned
      */
     public $number_of_matches_returned = 0;
     /**
@@ -17,7 +17,7 @@ class Result {
      */
     public $seconds_elapsed = 0.0;
     /**
-     * @var int total number of Post the query matched
+     * @var int total number of posts the query matched
      */
     public $number_of_matches_total = 0;
     /**
