@@ -3,3 +3,4 @@ vendor
 phpunit.phar
 twingly-search-api-php.iml
 composer.lock
+docs

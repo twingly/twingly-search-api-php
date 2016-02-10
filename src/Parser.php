@@ -15,16 +15,12 @@ class Parser {
         $doc = simplexml_load_string($document);
 
         if($doc->getName() == 'html') {
-            throw new \Twingly\ServerException((string)$doc->xpath('//text()')[0]);
+            $this->_handle_non_xml_document($doc);
         }
 
         if(isset($doc->operationResult)) {
             if((string)$doc->operationResult->attributes()->resultType == 'failure') {
-                if(strpos((string)$doc->operationResult, 'API key') !== FALSE) {
-                    throw new AuthException((string)$doc->operationResult);
-                } else {
-                    throw new ServerException((string)$doc->operationResult);
-                }
+                $this->_handle_failure((string)$doc->operationResult);
             }
         }
 

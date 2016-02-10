@@ -50,7 +50,7 @@ To learn more about the capabilities of the API, please read the [Twingly Search
 
 ## Development
 
-Install PHP and [Composer] (OSX):
+Install PHP and [Composer], on OSX:
 
     brew tap homebrew/php
     brew install php70    # or another supported version
