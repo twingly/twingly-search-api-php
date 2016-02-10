@@ -22,7 +22,7 @@ class Client {
     /**
      * Client constructor.
      *
-     * @param string $api_key Twingly Search API Key
+     * @param string $api_key Twingly Search API Key. If not provided, reads key from environment (TWINGLY_SEARCH_KEY)
      * @param string $user_agent User Agent for client
      */
     function __construct($api_key = false, $user_agent = false)
@@ -64,6 +64,8 @@ class Client {
 
     /**
      * Executes the given Query and returns the result
+     *
+     * This method should not be called manually.
      *
      * @param Query $query the query to be executed
      *

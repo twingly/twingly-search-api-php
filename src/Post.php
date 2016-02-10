@@ -25,11 +25,11 @@ class Post {
      */
     public $language_code = '';
     /**
-     * @var \DateTime published the time, in UTC, when this post was published
+     * @var \DateTime the time, in UTC, when the post was published
      */
     public $published;
     /**
-     * @var \DateTime indexed the time, in UTC, when this post was indexed by Twingly
+     * @var \DateTime the time, in UTC, when the post was indexed by Twingly
      */
     public $indexed;
     /**
@@ -41,13 +41,13 @@ class Post {
      */
     public $blog_name = '';
     /**
-     * @var int  authority the blog's authority/influence
-     *           (https://developer.twingly.com/resources/search/#authority)
+     * @var int the blog's authority/influence
+     *          (https://developer.twingly.com/resources/search/#authority)
      */
     public $authority = 0;
     /**
-     * @var int  the rank of the blog, based on authority and language
-     *           (https://developer.twingly.com/resources/search/#authority)
+     * @var int the rank of the blog, based on authority and language
+     *          (https://developer.twingly.com/resources/search/#authority)
      */
     public $blog_rank = 0;
     /**

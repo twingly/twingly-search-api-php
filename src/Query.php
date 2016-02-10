@@ -9,11 +9,11 @@ namespace Twingly;
  */
 class Query {
     /**
-     * @var string pattern the search query
+     * @var string the search query
      */
     public $pattern = '';
     /**
-     * @var string language which language to restrict the query to
+     * @var string language to restrict the query to
      */
     public $language = '';
     /**
@@ -30,7 +30,7 @@ class Query {
     public $end_time = null;
 
     /**
-     * No need to call this method manually, instead use {Client#query}.
+     * No need to call this method manually.
      *
      * @param Client $client
      */
@@ -39,7 +39,7 @@ class Query {
     }
 
     /**
-     * @return string request url for the query
+     * @return string the request url for the query
      */
     function url() {
         return sprintf("%s?%s", $this->client->endpoint_url(), $this->url_parameters());
