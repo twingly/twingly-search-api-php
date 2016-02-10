@@ -16,7 +16,7 @@ class Client {
     const DEFAULT_USER_AGENT = 'Twingly Search PHP Client/%s';
 
     public $api_key = null;
-    public $_user_agent = null;
+    public $user_agent = null;
     public $guzzle;
 
     /**
@@ -40,14 +40,14 @@ class Client {
         if(!$user_agent) {
             $user_agent = sprintf(Client::DEFAULT_USER_AGENT, Client::VERSION);
         }
-        $this->_user_agent = $user_agent;
+        $this->user_agent = $user_agent;
 
         $this->guzzle = new \GuzzleHttp\Client([
             'base_uri' => Client::BASE_URL,
             'headers' => [
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
-                'User-Agent' => $this->_user_agent
+                'User-Agent' => $this->user_agent
             ],
             'verify' => false
         ]);
