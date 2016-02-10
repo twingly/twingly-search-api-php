@@ -48,6 +48,28 @@ To learn more about the capabilities of the API, please read the [Twingly Search
   * PHP 5.6, 7.0, HHVM
   * Guzzle
 
+## Development
+
+Install PHP and [Composer] (OSX):
+
+    brew tap homebrew/php
+    brew install php70    # or another supported version
+    brew install composer
+
+Install project dependencies:
+
+    composer install
+
+Run tests:
+
+    ./vendor/bin/phpunit
+
+Run examples:
+
+    TWINGLY_SEARCH_KEY=<KEY> php examples/hello_world.php
+
+[Composer]: https://getcomposer.org/
+
 ## License
 
 The MIT License (MIT)
