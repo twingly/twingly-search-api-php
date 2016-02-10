@@ -15,12 +15,12 @@ class Parser {
         $doc = simplexml_load_string($document);
 
         if($doc->getName() == 'html') {
-            $this->_handle_non_xml_document($doc);
+            $this->handle_non_xml_document($doc);
         }
 
         if(isset($doc->operationResult)) {
             if((string)$doc->operationResult->attributes()->resultType == 'failure') {
-                $this->_handle_failure((string)$doc->operationResult);
+                $this->handle_failure((string)$doc->operationResult);
             }
         }
 
