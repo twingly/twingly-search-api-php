@@ -25,11 +25,11 @@ class Post {
      */
     public $language_code = '';
     /**
-     * @var \DateTime the time, in UTC, when this post was published
+     * @var \DateTime the time, in UTC, when the post was published
      */
     public $published;
     /**
-     * @var \DateTime the time, in UTC, when this post was indexed by Twingly
+     * @var \DateTime the time, in UTC, when the post was indexed by Twingly
      */
     public $indexed;
     /**
