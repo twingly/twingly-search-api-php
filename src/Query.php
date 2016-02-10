@@ -76,7 +76,7 @@ class Query {
             'searchpattern' => $this->pattern,
             'documentlang' => $this->language,
             'ts' => $this->ts(),
-            'tsTo' => $this->tsTo(),
+            'tsTo' => $this->ts_to(),
             'xmloutputversion' => 2
         ];
     }
@@ -89,7 +89,7 @@ class Query {
         }
     }
 
-    function tsTo() {
+    function ts_to() {
         if($this->end_time instanceof \DateTime) {
             return $this->end_time->format('Y-m-d H:i:s');
         } else {
