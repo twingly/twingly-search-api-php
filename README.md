@@ -10,6 +10,9 @@ Install via Composer
 
 ```shell
 php composer.phar require twingly/twingly-search
+
+# Or if you have installed composer globally
+composer require twingly/twingly-search
 ```
 
 ## Usage
