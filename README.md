@@ -68,7 +68,19 @@ Run examples:
 
     TWINGLY_SEARCH_KEY=<KEY> php examples/hello_world.php
 
+### Release
+
+`twingly-search` is released on [Packagist].
+
+1. Bump the version in [client.php](src/client.php), follow [Semantic Versioning 2.0.0](http://semver.org/).
+1. Create a tag with the same version and push it to GitHub:
+
+        git tag <VERSION> && git push --tags
+
+1. You're done! (*This repo has a GitHub service hook that notifies [Packagist] when a new version is created.*)
+
 [Composer]: https://getcomposer.org/
+[Packagist]: https://packagist.org
 
 ## License
 
