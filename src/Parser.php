@@ -63,7 +63,7 @@ class Parser {
 
     private function parse_tags($element) {
         $tags = [];
-        foreach($element->xpath('//tag') as $tag) {
+        foreach($element->xpath('child::tag') as $tag) {
             $tags[] = (string)$tag;
         }
         return $tags;
