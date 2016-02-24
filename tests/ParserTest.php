@@ -12,7 +12,6 @@ use Twingly\Exception;
 use Twingly\Query;
 use Twingly\QueryException;
 
-
 class ParserTest extends \PHPUnit_Framework_TestCase {
     static function getFixture($fixture_name) {
         $file_path = dirname(__DIR__) . "/tests/fixtures/{$fixture_name}.xml";
@@ -81,16 +80,6 @@ class ParserTest extends \PHPUnit_Framework_TestCase {
             $this->assertEquals('503 Service Unavailable', $e->getMessage());
         }
     }
-
-
-
-
-
-
-
-
-
-
 
     function testWithPostContainingOneTag() {
         $data = self::getFixture('minimal_valid_result');
