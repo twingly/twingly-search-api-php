@@ -13,14 +13,19 @@ use Twingly\QueryException;
 
 
 class ParserTest extends \PHPUnit_Framework_TestCase {
+    static function getFixture($fixture_name) {
+        $file_path = dirname(__DIR__) . "/tests/fixtures/{$fixture_name}.xml";
+        return file_get_contents($file_path);
+    }
+
     function testWithValidResult() {
-        $data = file_get_contents(dirname(__DIR__) . '/tests/fixtures/valid_result.xml');
+        $data = self::getFixture('valid_result');
         $r = (new Parser())->parse($data);
         $this->assertTrue($r instanceof Result);
     }
 
     function testWithValidResultContainingNonBlogs() {
-        $data = file_get_contents(dirname(__DIR__) . '/tests/fixtures/valid_non_blog_result.xml');
+        $data = self::getFixture('valid_non_blog_result');
         $r = (new Parser())->parse($data);
         $this->assertTrue($r instanceof Result);
         $this->assertEquals(count($r->posts), 1);
@@ -28,7 +33,7 @@ class ParserTest extends \PHPUnit_Framework_TestCase {
 
     function testWithNonexistentApiKeyResult() {
         try {
-            $data = file_get_contents(dirname(__DIR__) . '/tests/fixtures/nonexistent_api_key_result.xml');
+            $data = self::getFixture('nonexistent_api_key_result');
             $r = (new Parser())->parse($data);
             $this->fail('Should throw Auth exception');
         } catch (AuthException $e) {
@@ -38,7 +43,7 @@ class ParserTest extends \PHPUnit_Framework_TestCase {
 
     function testWithUnauthorizedApiKeyResult() {
         try {
-            $data = file_get_contents(dirname(__DIR__) . '/tests/fixtures/unauthorized_api_key_result.xml');
+            $data = self::getFixture('unauthorized_api_key_result');
             $r = (new Parser())->parse($data);
             $this->fail('Should throw Auth exception');
         } catch (AuthException $e) {
@@ -48,7 +53,7 @@ class ParserTest extends \PHPUnit_Framework_TestCase {
 
     function testWithServiceUnavailableResult() {
         try {
-            $data = file_get_contents(dirname(__DIR__) . '/tests/fixtures/service_unavailable_result.xml');
+            $data = self::getFixture('service_unavailable_result');
             $r = (new Parser())->parse($data);
             $this->fail('Should throw Server exception');
         } catch (ServerException $e) {
@@ -58,7 +63,7 @@ class ParserTest extends \PHPUnit_Framework_TestCase {
 
     function testWithUndefinedErrorResult() {
         try {
-            $data = file_get_contents(dirname(__DIR__) . '/tests/fixtures/undefined_error_result.xml');
+            $data = self::getFixture('undefined_error_result');
             $r = (new Parser())->parse($data);
             $this->fail('Should throw Server exception');
         } catch (ServerException $e) {
@@ -68,7 +73,7 @@ class ParserTest extends \PHPUnit_Framework_TestCase {
 
     function testWithNonXmlResult() {
         try {
-            $data = file_get_contents(dirname(__DIR__) . '/tests/fixtures/non_xml_result.xml');
+            $data = self::getFixture('non_xml_result');
             $r = (new Parser())->parse($data);
             $this->fail('Should throw Server exception');
         } catch (ServerException $e) {
