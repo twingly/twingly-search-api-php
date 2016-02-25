@@ -83,6 +83,13 @@ class QueryTest extends \PHPUnit_Framework_TestCase {
         $q->pattern = 'spotify';
         $q->start_time = \DateTime::createFromFormat('Y-m-d H:i:s P', '2012-12-28 09:01:22 +01:00');
         $this->assertEquals($q->request_parameters()['ts'], '2012-12-28 08:01:22');
+    }
+
+    function testStartTimeUtcConversionDoesntModifyOriginalObject(){
+        $q = $this->client->query();
+        $q->pattern = 'spotify';
+        $q->start_time = \DateTime::createFromFormat('Y-m-d H:i:s P', '2012-12-28 09:01:22 +01:00');
+        $q->request_parameters();
         $this->assertEquals($q->start_time->format('P'), '+01:00');
     }
 
@@ -98,6 +105,13 @@ class QueryTest extends \PHPUnit_Framework_TestCase {
         $q->pattern = 'spotify';
         $q->end_time = \DateTime::createFromFormat('Y-m-d H:i:s P', '2012-12-28 09:01:22 +01:00');
         $this->assertEquals($q->request_parameters()['tsTo'], '2012-12-28 08:01:22');
+    }
+
+    function testEndTimeUtcConversionDoesntModifyOriginalObject(){
+        $q = $this->client->query();
+        $q->pattern = 'spotify';
+        $q->end_time = \DateTime::createFromFormat('Y-m-d H:i:s P', '2012-12-28 09:01:22 +01:00');
+        $q->request_parameters();
         $this->assertEquals($q->end_time->format('P'), '+01:00');
     }
 
