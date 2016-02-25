@@ -75,23 +75,17 @@ class Query {
             'key' => $this->client->api_key,
             'searchpattern' => $this->pattern,
             'documentlang' => $this->language,
-            'ts' => $this->ts(),
-            'tsTo' => $this->ts_to(),
+            'ts' => $this->datetime_to_utc_string($this->start_time),
+            'tsTo' => $this->datetime_to_utc_string($this->end_time),
             'xmloutputversion' => 2
         ];
     }
 
-    private function ts() {
-        if($this->start_time instanceof \DateTime) {
-            return $this->start_time->format('Y-m-d H:i:s');
-        } else {
-            return '';
-        }
-    }
-
-    private function ts_to() {
-        if($this->end_time instanceof \DateTime) {
-            return $this->end_time->format('Y-m-d H:i:s');
+    private function datetime_to_utc_string($datetime) {
+        if($datetime instanceof \DateTime) {
+            $datetime_copy = clone $datetime;
+            $datetime_copy->setTimezone(new \DateTimeZone('UTC'));
+            return $datetime_copy->format('Y-m-d H:i:s');
         } else {
             return '';
         }
