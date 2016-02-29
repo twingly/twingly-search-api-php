@@ -6,7 +6,6 @@ use Twingly\Client;
 use Twingly\AuthException;
 use Twingly\Query;
 
-
 class ClientTest extends \PHPUnit_Framework_TestCase {
     public function __construct()
     {
@@ -16,7 +15,9 @@ class ClientTest extends \PHPUnit_Framework_TestCase {
     }
 
     public function setUp(){
-        \VCR\VCR::configure()->setCassettePath('tests/fixtures/vcr_cassettes');
+        \VCR\VCR::configure()
+            ->setCassettePath('tests/fixtures/vcr_cassettes')
+            ->enableRequestMatchers(array('method', 'url'));
     }
 
     public function testNew() {
