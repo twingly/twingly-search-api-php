@@ -32,7 +32,7 @@ foreach($result->posts as $post) {
 }
 ```
 
-The `Twingly` library talks to a commercial blog search API and requires an API key. Best practice is to set the `TWINGLY_SEARCH_KEY` environment variable to the obtained key. `\Twingly\Client` can be passed a key at initialization if your setup does not allow environment variables.
+The `twingly-search` library talks to a commercial blog search API and requires an API key. Best practice is to set the `TWINGLY_SEARCH_KEY` environment variable to the obtained key. `\Twingly\Client` can be passed a key at initialization if your setup does not allow environment variables.
 
 Library is documented with [phpdoc](http://www.phpdoc.org/). To generate documentation call
 
