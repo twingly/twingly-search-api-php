@@ -10,7 +10,7 @@ require 'vendor/autoload.php';
  * @package Twingly
  */
 class Client {
-    const VERSION = '1.0.0';
+    const VERSION = '1.1.0';
     const BASE_URL = 'https://api.twingly.com';
     const SEARCH_PATH = '/analytics/Analytics.ashx';
     const DEFAULT_USER_AGENT = 'Twingly Search PHP Client/%s';
