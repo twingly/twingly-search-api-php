@@ -30,7 +30,7 @@ class Query {
     public $end_time = null;
 
     /**
-     * No need to call this method manually.
+     * No need to call this method manually, instead use Client->query().
      *
      * @param Client $client
      */
@@ -49,6 +49,9 @@ class Query {
      * Executes the query and returns the result
      *
      * @return Result the result for this query
+     * @throws QueryException if no search pattern has been set.
+     * @throws AuthException if the API couldn't authenticate you. Make sure your API key is correct.
+     * @throws ServerException if the query could not be executed due to a server error.
      */
     function execute() {
         return $this->client->execute_query($this);

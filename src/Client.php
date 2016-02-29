@@ -24,6 +24,8 @@ class Client {
      *
      * @param string $api_key Twingly Search API Key. If not provided, reads key from environment (TWINGLY_SEARCH_KEY)
      * @param string $user_agent User Agent for client
+     *
+     * @throws AuthException if no API key was provided
      */
     function __construct($api_key = false, $user_agent = false)
     {
@@ -65,14 +67,11 @@ class Client {
     /**
      * Executes the given Query and returns the result
      *
-     * This method should not be called manually.
+     * This method should not be called manually, instead use Query->execute().
      *
      * @param Query $query the query to be executed
      *
      * @return Result
-     * @throws AuthException
-     * @throws QueryException
-     * @throws ServerException
      */
     public function execute_query($query) {
         $response_body = $this->get_response($query)->getBody();
