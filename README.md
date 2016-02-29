@@ -34,7 +34,7 @@ foreach($result->posts as $post) {
 
 The `twingly-search` library talks to a commercial blog search API and requires an API key. Best practice is to set the `TWINGLY_SEARCH_KEY` environment variable to the obtained key. `\Twingly\Client` can be passed a key at initialization if your setup does not allow environment variables.
 
-Library is documented with [phpdoc](http://www.phpdoc.org/). To generate documentation call
+This library is documented with [phpdoc](http://www.phpdoc.org/). To generate documentation call
 
 ```shell
 phpdoc -d ./src -t ./docs
@@ -53,7 +53,7 @@ To learn more about the capabilities of the API, please read the [Twingly Search
 
 ## Development
 
-Install PHP and [Composer], on OSX:
+Install PHP and [Composer], on OS X:
 
     brew tap homebrew/php
     brew install php70    # or another supported version
