@@ -31,6 +31,15 @@ class ParserTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals(count($r->posts), 1);
     }
 
+    function testWithValidEmptyResult() {
+        $data = self::getFixture('valid_empty_result');
+        $r = (new Parser())->parse($data);
+        $this->assertTrue($r instanceof Result);
+        $this->assertEquals(count($r->posts), 0);
+        $this->assertEquals($r->number_of_matches_total, 0);
+        $this->assertEquals($r->number_of_matches_returned, 0);
+    }
+
     function testWithNonexistentApiKeyResult() {
         try {
             $data = self::getFixture('nonexistent_api_key_result');
