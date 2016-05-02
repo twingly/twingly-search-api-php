@@ -46,7 +46,7 @@ To learn more about the capabilities of the API, please read the [Twingly Search
 
 ## Requirements
 
-* API key, contact sales@twingly.com via [twingly.com](https://www.twingly.com/try-for-free/) to get one
+* API key, [sign up](https://www.twingly.com/try-for-free) via [twingly.com](https://www.twingly.com/) to get one
 * PHP 5.6, 7.0
 
 ## Development
