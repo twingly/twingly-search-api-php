@@ -73,14 +73,13 @@ class Query {
         if(empty($this->pattern)) {
             throw new \Twingly\QueryException("Missing pattern");
         }
-
+        $search_query = '' . $this->pattern;
+        $search_query .= !empty($this->language) ? ' lang:' . $this->language : '';
+        $search_query .= !empty($this->start_time) ? ' start-date:' . $this->datetime_to_utc_string($this->start_time) : '';
+        $search_query .= !empty($this->end_time) ? ' end-date:' . $this->datetime_to_utc_string($this->end_time) : '';
         return [
-            'key' => $this->client->api_key,
-            'searchpattern' => $this->pattern,
-            'documentlang' => $this->language,
-            'ts' => $this->datetime_to_utc_string($this->start_time),
-            'tsTo' => $this->datetime_to_utc_string($this->end_time),
-            'xmloutputversion' => 2
+            'apikey' => $this->client->api_key,
+            'q' => $search_query
         ];
     }
 
@@ -88,7 +87,7 @@ class Query {
         if($datetime instanceof \DateTime) {
             $datetime_copy = clone $datetime;
             $datetime_copy->setTimezone(new \DateTimeZone('UTC'));
-            return $datetime_copy->format('Y-m-d H:i:s');
+            return $datetime_copy->format('Y-m-d\TH:i:s');
         } else {
             return '';
         }

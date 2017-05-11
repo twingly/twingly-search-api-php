@@ -1,0 +1,42 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.twingly.com/blog/search/api/v3/search?apikey=wrong&q=something
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Twingly Search Ruby Client/5.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 04 May 2017 07:14:00 GMT
+      Content-Type:
+      - application/xml; charset=utf-8
+      Content-Length:
+      - '97'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Expires:
+      - "-1"
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="utf-8"?><error code="40101"><message>Unauthorized</message></error>
+    http_version:
+  recorded_at: Thu, 04 May 2017 07:14:00 GMT
+recorded_with: VCR 2.9.3

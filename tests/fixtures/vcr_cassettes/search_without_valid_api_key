@@ -2,24 +2,25 @@
 -
     request:
         method: GET
-        url: 'https://api.twingly.com/analytics/Analytics.ashx?key=wrong&searchpattern=something&documentlang=&ts=&tsTo=&xmloutputversion=2'
+        url: 'https://api.twingly.com/blog/search/api/v3/search?apikey=wrong&q=something'
         headers:
             Host: api.twingly.com
             Accept-Encoding: null
             Content-Type: application/json
             Accept: application/json
-            User-Agent: 'Twingly Search PHP Client/1.0.0'
+            User-Agent: 'Twingly Search PHP Client/1.1.0'
     response:
         status:
             http_version: '1.1'
-            code: '200'
-            message: OK
+            code: '401'
+            message: Unauthorized
         headers:
             Server: nginx
-            Date: 'Sat, 06 Feb 2016 02:40:51 GMT'
-            Content-Type: 'text/xml; charset=utf-8'
-            Content-Length: '183'
+            Date: 'Thu, 11 May 2017 19:48:31 GMT'
+            Content-Type: 'application/xml; charset=utf-8'
+            Content-Length: '97'
             Connection: keep-alive
-            Cache-Control: private
-            Set-Cookie: 'SERVERID=web03; path=/'
-        body: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><blogstream xmlns=\"http://www.twingly.com\">\r\n  <operationResult resultType=\"failure\">The API key does not exist.</operationResult>\r\n</blogstream>"
+            Cache-Control: no-cache
+            Pragma: no-cache
+            Expires: '-1'
+        body: '<?xml version="1.0" encoding="utf-8"?><error code="40101"><message>Unauthorized</message></error>'

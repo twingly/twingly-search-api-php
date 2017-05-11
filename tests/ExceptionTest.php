@@ -11,21 +11,29 @@ use Twingly\QueryException;
 
 
 class ExceptionTest extends \PHPUnit_Framework_TestCase {
-    function testFromApiResponseMessage() {
+    function testFromApiResponse() {
         try {
             $ex = new Exception();
-            $ex->from_api_response_message('... API key ...');
+            $ex->from_api_response(401);
             $this->fail('Should throw AuthException');
         } catch (AuthException $e) {
-            $this->assertEquals('... API key ...', $e->getMessage());
+            $this->assertContains('401', $e->getMessage());
         }
 
         try {
             $ex = new Exception();
-            $ex->from_api_response_message('server error');
+            $ex->from_api_response(500);
             $this->fail('Should throw ServerException');
         } catch (ServerException $e) {
-            $this->assertEquals('server error', $e->getMessage());
+            $this->assertContains('500', $e->getMessage());
+        }
+
+        try {
+            $ex = new Exception();
+            $ex->from_api_response(400);
+            $this->fail('Should throw QueryException');
+        } catch (QueryException $e) {
+            $this->assertContains('400', $e->getMessage());
         }
     }
 

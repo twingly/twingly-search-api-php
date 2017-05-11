@@ -37,13 +37,7 @@ class QueryTest extends \PHPUnit_Framework_TestCase {
         }
     }
 
-    function testQueryWithValidPattern() {
-        $q = $this->client->query();
-        $q->pattern = 'christmas';
-        $this->assertContains('xmloutputversion=2', $q->url());
-    }
-
-    function testQueryWithoutValidPattern() {
+    function testQueryWithoutSearchPattern() {
         try {
             $q = $this->client->query();
             $q->url();
@@ -53,7 +47,7 @@ class QueryTest extends \PHPUnit_Framework_TestCase {
         }
     }
 
-    function testQueryWithEmptyPattern(){
+    function testQueryWithEmptySearchQuery(){
         try {
             $q = $this->client->query();
             $q->pattern = '';
@@ -68,21 +62,21 @@ class QueryTest extends \PHPUnit_Framework_TestCase {
         $q = $this->client->query();
         $q->pattern = 'spotify';
         $q->language = 'en';
-        $this->assertEquals($q->request_parameters()['documentlang'], 'en');
+        $this->assertContains('lang:en', $q->request_parameters()['q']);
     }
 
     function testQueryShouldAddStartTime(){
         $q = $this->client->query();
         $q->pattern = 'spotify';
         $q->start_time = \DateTime::createFromFormat('Y-m-d H:i:s', '2012-12-28 09:01:22');
-        $this->assertEquals($q->request_parameters()['ts'], '2012-12-28 09:01:22');
+        $this->assertContains('start-date:2012-12-28T09:01:22', $q->request_parameters()['q']);
     }
 
     function testQueryWithStartTimeInTimezoneOtherThanUtc(){
         $q = $this->client->query();
         $q->pattern = 'spotify';
         $q->start_time = \DateTime::createFromFormat('Y-m-d H:i:s P', '2012-12-28 09:01:22 +01:00');
-        $this->assertEquals($q->request_parameters()['ts'], '2012-12-28 08:01:22');
+        $this->assertContains('start-date:2012-12-28T08:01:22', $q->request_parameters()['q']);
     }
 
     function testStartTimeUtcConversionDoesntModifyOriginalObject(){
@@ -97,14 +91,14 @@ class QueryTest extends \PHPUnit_Framework_TestCase {
         $q = $this->client->query();
         $q->pattern = 'spotify';
         $q->end_time = \DateTime::createFromFormat('Y-m-d H:i:s', '2012-12-28 09:01:22');
-        $this->assertEquals($q->request_parameters()['tsTo'], '2012-12-28 09:01:22');
+        $this->assertContains('end-date:2012-12-28T09:01:22', $q->request_parameters()['q']);
     }
 
     function testQueryWithEndTimeInTimezoneOtherThanUtc(){
         $q = $this->client->query();
         $q->pattern = 'spotify';
         $q->end_time = \DateTime::createFromFormat('Y-m-d H:i:s P', '2012-12-28 09:01:22 +01:00');
-        $this->assertEquals($q->request_parameters()['tsTo'], '2012-12-28 08:01:22');
+        $this->assertContains('end-date:2012-12-28T08:01:22', $q->request_parameters()['q']);
     }
 
     function testEndTimeUtcConversionDoesntModifyOriginalObject(){
@@ -119,13 +113,13 @@ class QueryTest extends \PHPUnit_Framework_TestCase {
         $q = $this->client->query();
         $q->pattern = 'spotify';
         $q->end_time = \DateTime::createFromFormat('Y-m-d H:i:s', '2012-12-28 09:01:22');
-        $this->assertContains('tsTo=2012-12-28+09%3A01%3A22', $q->url_parameters());
+        $this->assertContains('end-date%3A2012-12-28T09%3A01%3A22', $q->url_parameters());
     }
 
     function testQueryPattern() {
         $q = $this->client->query();
         $q->pattern = 'spotify';
-        $this->assertContains('searchpattern=spotify', $q->url_parameters());
+        $this->assertContains('spotify', $q->url_parameters());
     }
 
     public function testExecuteQueryWithInvalidAPIKey() {
