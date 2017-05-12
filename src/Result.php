@@ -39,13 +39,6 @@ class Result {
         return $this->number_of_matches_returned == $this->number_of_matches_total;
     }
 
-    /**
-     * @return bool returns whether the result is incomplete or not
-     */
-    public function incomplete() {
-        return $this->incomplete_result;
-    }
-
     public function __toString()
     {
         $matches = sprintf("posts, number_of_matches_returned=%d, number_of_matches_total=%d, incomplete_result=%b",

@@ -93,15 +93,7 @@ class Client {
 
     private function get_response($query) {
         $response = $this->guzzle->get($query->url(), ['http_errors' => false]); // disable http errors, we will handle them
-        // if(($response->getStatusCode() >= 200)&&($response->getStatusCode() < 300)) { Code moved to Exception::from_api_response
-            return $response;
-        /*} else {
-            if ($response->getStatusCode() >= 500) {
-                throw new ServerException($response);
-            } else {
-                throw new QueryException($response);
-            }
-        } */
+        return $response;
     }
 
     private function api_key_missing() {

@@ -24,6 +24,6 @@ class ResultTest extends \PHPUnit_Framework_TestCase {
         $this->assertTrue(is_float($r->seconds_elapsed));
         $this->assertEquals($r->seconds_elapsed, 0.369);
         $this->assertFalse($r->all_results_returned());
-        $this->assertFalse($r->incomplete());
+        $this->assertFalse($r->incomplete_result);
     }
 }

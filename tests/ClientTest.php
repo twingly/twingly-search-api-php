@@ -63,7 +63,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase {
         $c = new Client();
         try {
             $q = $c->query();
-            $q->pattern = 'something';
+            $q->search_query = 'something';
             $c->execute_query($q);
             $this->fail('Should throw AuthException.');
         } catch (AuthException $e) {

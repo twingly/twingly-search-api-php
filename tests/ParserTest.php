@@ -161,12 +161,12 @@ class ParserTest extends \PHPUnit_Framework_TestCase {
     function testWithIncompleteResult() {
         $data = self::getFixture('incomplete_result');
         $result = (new Parser())->parse($data);
-        $this->assertTrue($result->incomplete());
+        $this->assertTrue($result->incomplete_result);
     }
 
     function testWithCompleteResult() {
         $data = self::getFixture('valid_empty_result');
         $result = (new Parser())->parse($data);
-        $this->assertFalse($result->incomplete());
+        $this->assertFalse($result->incomplete_result);
     }
 }

@@ -50,7 +50,7 @@ class QueryTest extends \PHPUnit_Framework_TestCase {
     function testQueryWithEmptySearchQuery(){
         try {
             $q = $this->client->query();
-            $q->pattern = '';
+            $q->search_query = '';
             $q->url();
             $this->fail('Should throw QueryException');
         } catch (QueryException $e) {
@@ -58,30 +58,23 @@ class QueryTest extends \PHPUnit_Framework_TestCase {
         }
     }
 
-    function testQueryShouldAddLanguage(){
-        $q = $this->client->query();
-        $q->pattern = 'spotify';
-        $q->language = 'en';
-        $this->assertContains('lang:en', $q->request_parameters()['q']);
-    }
-
     function testQueryShouldAddStartTime(){
         $q = $this->client->query();
-        $q->pattern = 'spotify';
+        $q->search_query = 'spotify';
         $q->start_time = \DateTime::createFromFormat('Y-m-d H:i:s', '2012-12-28 09:01:22');
         $this->assertContains('start-date:2012-12-28T09:01:22', $q->request_parameters()['q']);
     }
 
     function testQueryWithStartTimeInTimezoneOtherThanUtc(){
         $q = $this->client->query();
-        $q->pattern = 'spotify';
+        $q->search_query = 'spotify';
         $q->start_time = \DateTime::createFromFormat('Y-m-d H:i:s P', '2012-12-28 09:01:22 +01:00');
         $this->assertContains('start-date:2012-12-28T08:01:22', $q->request_parameters()['q']);
     }
 
     function testStartTimeUtcConversionDoesntModifyOriginalObject(){
         $q = $this->client->query();
-        $q->pattern = 'spotify';
+        $q->search_query = 'spotify';
         $q->start_time = \DateTime::createFromFormat('Y-m-d H:i:s P', '2012-12-28 09:01:22 +01:00');
         $q->request_parameters();
         $this->assertEquals($q->start_time->format('Y-m-d H:i:s P'), '2012-12-28 09:01:22 +01:00');
@@ -89,21 +82,21 @@ class QueryTest extends \PHPUnit_Framework_TestCase {
 
     function testQueryShouldAddEndTime(){
         $q = $this->client->query();
-        $q->pattern = 'spotify';
+        $q->search_query = 'spotify';
         $q->end_time = \DateTime::createFromFormat('Y-m-d H:i:s', '2012-12-28 09:01:22');
         $this->assertContains('end-date:2012-12-28T09:01:22', $q->request_parameters()['q']);
     }
 
     function testQueryWithEndTimeInTimezoneOtherThanUtc(){
         $q = $this->client->query();
-        $q->pattern = 'spotify';
+        $q->search_query = 'spotify';
         $q->end_time = \DateTime::createFromFormat('Y-m-d H:i:s P', '2012-12-28 09:01:22 +01:00');
         $this->assertContains('end-date:2012-12-28T08:01:22', $q->request_parameters()['q']);
     }
 
     function testEndTimeUtcConversionDoesntModifyOriginalObject(){
         $q = $this->client->query();
-        $q->pattern = 'spotify';
+        $q->search_query = 'spotify';
         $q->end_time = \DateTime::createFromFormat('Y-m-d H:i:s P', '2012-12-28 09:01:22 +01:00');
         $q->request_parameters();
         $this->assertEquals($q->end_time->format('Y-m-d H:i:s P'), '2012-12-28 09:01:22 +01:00');
@@ -111,27 +104,35 @@ class QueryTest extends \PHPUnit_Framework_TestCase {
 
     function testQueryShouldEncodeUrlParameters() {
         $q = $this->client->query();
-        $q->pattern = 'spotify';
+        $q->search_query = 'spotify';
         $q->end_time = \DateTime::createFromFormat('Y-m-d H:i:s', '2012-12-28 09:01:22');
         $this->assertContains('end-date%3A2012-12-28T09%3A01%3A22', $q->url_parameters());
     }
 
     function testQueryPattern() {
         $q = $this->client->query();
-        $q->pattern = 'spotify';
+        $q->search_query = 'spotify';
         $this->assertContains('spotify', $q->url_parameters());
     }
 
-    public function testExecuteQueryWithInvalidAPIKey() {
+    public function testExecuteQueryWithValidAPIKey() {
         \VCR\VCR::turnOn();
         \VCR\VCR::insertCassette('search_for_spotify_on_sv_blogs');
+        \VCR\VCR::getEventDispatcher()->addListener(\VCR\VCREvents::VCR_BEFORE_RECORD, array($this, 'cleanRequest'));
 
         $q = $this->client->query();
-        $q->pattern = 'spotify page-size:10';
-        $q->language = 'sv';
+        $q->search_query = 'spotify page-size:10 language:sv';
         $r = $q->execute();
         $this->assertGreaterThan(0, count($r->posts));
 
         \VCR\VCR::turnOff();
+    }
+
+    public function cleanRequest(\Symfony\Component\EventDispatcher\Event $event, $eventName)
+    {
+        $request = $event->getRequest();
+        $url = $request->getUrl();
+        $url = preg_replace('/apikey=.*&/', 'apikey=hidden&', $url);
+        $request->setUrl($url);
     }
 }
