@@ -13,6 +13,11 @@ class Query {
      */
     public $search_query = '';
     /**
+     * @var string the search pattern
+     * @deprecated Use search query instead
+     */
+    public $pattern = '';
+    /**
      * @var string language to restrict the query to
      * @deprecated Use search query instead
      */
@@ -72,10 +77,17 @@ class Query {
      */
     function request_parameters() {
         if(empty($this->search_query)) {
-            throw new \Twingly\QueryException("Missing pattern");
+            throw new QueryException("Missing pattern");
         }
+
+        if(!empty($this->pattern)) { // handle deprecated variable
+            trigger_error('Query#pattern is deprecated, use search_query instead', E_USER_DEPRECATED);
+            $this->search_query = $this->pattern;
+        };
+
         $search_query = '' . $this->search_query;
-        if(!empty($this->language)) { //handle deprecated variable
+
+        if(!empty($this->language)) {
             trigger_error('Query#language is deprecated, include it in search_query instead', E_USER_DEPRECATED);
             $search_query .= ' lang:' . $this->language;
         }
