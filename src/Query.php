@@ -76,14 +76,14 @@ class Query {
      * @throws QueryException
      */
     function request_parameters() {
-        if(empty($this->search_query)) {
-            throw new QueryException("Missing pattern");
-        }
-
         if(!empty($this->pattern)) { // handle deprecated variable
             trigger_error('Query#pattern is deprecated, use search_query instead', E_USER_DEPRECATED);
             $this->search_query = $this->pattern;
-        };
+        }
+
+        if(empty($this->search_query)) {
+            throw new QueryException("Missing pattern");
+        }
 
         $search_query = '' . $this->search_query;
 
