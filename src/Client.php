@@ -12,7 +12,8 @@ require 'vendor/autoload.php';
 class Client {
     const VERSION = '1.1.0';
     const BASE_URL = 'https://api.twingly.com';
-    const SEARCH_PATH = '/analytics/Analytics.ashx';
+    const SEARCH_API_VERSION = 'v3';
+    const SEARCH_PATH = '/blog/search/api/'. self::SEARCH_API_VERSION .'/search';
     const DEFAULT_USER_AGENT = 'Twingly Search PHP Client/%s';
 
     public $api_key = null;
@@ -91,16 +92,8 @@ class Client {
     }
 
     private function get_response($query) {
-        $response = $this->guzzle->get($query->url());
-        if(($response->getStatusCode() >= 200)&&($response->getStatusCode() < 300)) {
-            return $response;
-        } else {
-            if ($response->getStatusCode() >= 500) {
-                throw new ServerException($response);
-            } else {
-                throw new QueryException($response);
-            }
-        }
+        $response = $this->guzzle->get($query->url(), ['http_errors' => false]); // disable http errors, we will handle them
+        return $response;
     }
 
     private function api_key_missing() {

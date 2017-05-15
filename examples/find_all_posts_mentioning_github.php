@@ -9,9 +9,8 @@ class SearchPostStream {
     {
         $this->client = new Client(false, 'MyCompany/1.0');
         $this->query = $this->client->query();
-        $this->query->pattern = sprintf('sort-order:asc sort:published %s', $keyword);
+        $this->query->search_query = sprintf('sort-order:asc sort:published lang:%s %s', $language, $keyword);
         $this->query->start_time = (new \DateTime('now', new \DateTimeZone('UTC')))->sub(new \DateInterval('P5D'));
-        $this->query->language = $language;
     }
 
     public function each() {

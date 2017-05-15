@@ -63,11 +63,11 @@ class ClientTest extends \PHPUnit_Framework_TestCase {
         $c = new Client();
         try {
             $q = $c->query();
-            $q->pattern = 'something';
+            $q->search_query = 'something';
             $c->execute_query($q);
             $this->fail('Should throw AuthException.');
         } catch (AuthException $e) {
-            $this->assertEquals('The API key does not exist.', $e->getMessage());
+            $this->assertContains('Unauthorized', $e->getMessage());
             putenv('TWINGLY_SEARCH_KEY=' . $temp_key);
         }
         \VCR\VCR::turnOff();

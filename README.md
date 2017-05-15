@@ -23,8 +23,7 @@ use Twingly\Client;
 $client = new Client();
 
 $query = $client->query();
-$query->pattern = 'github page-size:10';
-$query->language = 'sv';
+$query->search_query = 'github page-size:10 lang:sv';
 $result = $query->execute();
 
 foreach($result->posts as $post) {
