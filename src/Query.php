@@ -103,7 +103,7 @@ class Query {
         if($datetime instanceof \DateTime) {
             $datetime_copy = clone $datetime;
             $datetime_copy->setTimezone(new \DateTimeZone('UTC'));
-            return $datetime_copy->format('Y-m-d\TH:i:s');
+            return $datetime_copy->format('Y-m-d\TH:i:s\Z');
         } else {
             return '';
         }
