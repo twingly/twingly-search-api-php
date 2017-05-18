@@ -91,19 +91,19 @@ class Query {
             trigger_error('Query#language is deprecated, include it in search_query instead', E_USER_DEPRECATED);
             $search_query .= ' lang:' . $this->language;
         }
-        $search_query .= !empty($this->start_time) ? ' start-date:' . $this->datetime_to_utc_string($this->start_time) : '';
-        $search_query .= !empty($this->end_time) ? ' end-date:' . $this->datetime_to_utc_string($this->end_time) : '';
+        $search_query .= !empty($this->start_time) ? ' start-date:' . $this->datetime_to_iso8601_utc_string($this->start_time) : '';
+        $search_query .= !empty($this->end_time) ? ' end-date:' . $this->datetime_to_iso8601_utc_string($this->end_time) : '';
         return [
             'apikey' => $this->client->api_key,
             'q' => $search_query
         ];
     }
 
-    private function datetime_to_utc_string($datetime) {
+    private function datetime_to_iso8601_utc_string($datetime) {
         if($datetime instanceof \DateTime) {
             $datetime_copy = clone $datetime;
             $datetime_copy->setTimezone(new \DateTimeZone('UTC'));
-            return $datetime_copy->format('Y-m-d\TH:i:s');
+            return $datetime_copy->format('Y-m-d\TH:i:s\Z');
         } else {
             return '';
         }
