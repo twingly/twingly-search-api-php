@@ -82,7 +82,7 @@ class Query {
         }
 
         if(empty($this->search_query)) {
-            throw new QueryException("Missing pattern");
+            throw new QueryException("Missing search_query");
         }
 
         $search_query = '' . $this->search_query;
