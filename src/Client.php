@@ -10,7 +10,7 @@ require 'vendor/autoload.php';
  * @package Twingly
  */
 class Client {
-    const VERSION = '1.1.0';
+    const VERSION = '2.0.0';
     const BASE_URL = 'https://api.twingly.com';
     const SEARCH_API_VERSION = 'v3';
     const SEARCH_PATH = '/blog/search/api/'. self::SEARCH_API_VERSION .'/search';
