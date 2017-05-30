@@ -158,6 +158,17 @@ class ParserTest extends \PHPUnit_Framework_TestCase {
         ], $actual_post->links);
     }
 
+    function testWithCoordinates() {
+        $data = self::getFixture('valid_coordinates_result');
+        $result = (new Parser())->parse($data);
+        $actual_post = $result->posts[0];
+
+        $this->assertEquals([
+            'latitude' => 49.1,
+            'longitude' => 10.75,
+        ], $actual_post->coordinates);
+    }
+
     function testWithIncompleteResult() {
         $data = self::getFixture('incomplete_result');
         $result = (new Parser())->parse($data);
