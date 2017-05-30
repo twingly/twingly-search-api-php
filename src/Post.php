@@ -39,10 +39,19 @@ class Post {
     public $language_code = '';
     /**
      * @var array geographical coordinates from blog post
+     * @deprecated Use latitude and longitude instead
      */
     public $coordinates = [];
     /**
-     * @var array all links from the blog post to other resources
+     * @var float|null geographical latitude coordinate from blog post
+     */
+    public $latitude = null;
+    /**
+     * @var float|null geographical longitude coordinate from blog post
+     */
+    public $longitude = null;
+    /**
+     * @var float all links from the blog post to other resources
      */
     public $links = [];
     /**
@@ -106,6 +115,8 @@ class Post {
         $this->language_code = (string)$params['languageCode'];
         $this->location_code = (string)$params['locationCode'];
         $this->coordinates = $params['coordinates'];
+        $this->latitude = $this->get_with_default($this->coordinates['latitude'], null);
+        $this->longitude = $this->get_with_default($this->coordinates['longitude'], null);
         $this->links = $params['links'];
         $this->tags = $params['tags'];
         $this->images = isset($params['images']) ? ($params['images']) : [];
@@ -118,5 +129,9 @@ class Post {
         $this->blog_id = (string)$params['blogId'];
         $this->authority = (int)$params['authority'];
         $this->blog_rank = (int)$params['blogRank'];
+    }
+
+    private function get_with_default(&$var, $default) {
+        return isset($var) ? $var : $default;
     }
 }

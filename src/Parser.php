@@ -109,7 +109,7 @@ class Parser {
             case 'false':
                 return false;
             default:
-                return NULL;
+                return null;
         }
     }
 }
