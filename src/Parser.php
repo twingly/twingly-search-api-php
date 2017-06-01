@@ -76,10 +76,10 @@ class Parser {
     }
 
     private function parse_coordinates($element) {
-        if($element->children->length > 0) {
+        if($element->count() > 0) {
             return [
-                'latitude' => $element->xpath('latitude/text()'),
-                'longitude' => $element->xpath('longitude/text()')
+                'latitude' => (float)$element->latitude,
+                'longitude' => (float)$element->longitude
             ];
         }
         return [];
@@ -109,7 +109,7 @@ class Parser {
             case 'false':
                 return false;
             default:
-                return NULL;
+                return null;
         }
     }
 }
