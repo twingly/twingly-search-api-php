@@ -70,6 +70,8 @@ Run examples:
 
 ### Release
 
+#### Make the release
+
 `twingly-search` is released on [Packagist].
 
 1. Bump the version in [Client.php](src/Client.php), follow [Semantic Versioning 2.0.0](http://semver.org/).
@@ -81,6 +83,14 @@ Run examples:
 
 [Composer]: https://getcomposer.org/
 [Packagist]: https://packagist.org
+
+#### Update the changelog
+
+* Install [GitHub Changelog Generator](https://github.com/skywinder/github-changelog-generator/) if you don't have it
+  * `gem install github_changelog_generator`
+* Set `CHANGELOG_GITHUB_TOKEN` to a personal access token to increase your GitHub API rate limit
+* Generate the changelog
+  * `github_changelog_generator`
 
 ## License
 
