@@ -8,7 +8,7 @@
             Accept-Encoding: null
             Content-Type: application/json
             Accept: application/json
-            User-Agent: 'Twingly Search PHP Client/1.1.0'
+            User-Agent: 'Twingly Search PHP Client/2.1.0'
     response:
         status:
             http_version: '1.1'
@@ -16,7 +16,7 @@
             message: Unauthorized
         headers:
             Server: nginx
-            Date: 'Thu, 11 May 2017 19:48:31 GMT'
+            Date: 'Mon, 16 Oct 2017 09:24:55 GMT'
             Content-Type: 'application/xml; charset=utf-8'
             Content-Length: '97'
             Connection: keep-alive

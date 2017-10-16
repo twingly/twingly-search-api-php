@@ -121,7 +121,7 @@ class QueryTest extends \PHPUnit_Framework_TestCase {
         \VCR\VCR::getEventDispatcher()->addListener(\VCR\VCREvents::VCR_BEFORE_RECORD, array($this, 'cleanRequest'));
 
         $q = $this->client->query();
-        $q->search_query = 'spotify page-size:10 language:sv';
+        $q->search_query = 'spotify page-size:10 lang:sv';
         $r = $q->execute();
         $this->assertGreaterThan(0, count($r->posts));
 
