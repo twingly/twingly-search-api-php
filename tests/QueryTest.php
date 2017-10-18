@@ -62,14 +62,14 @@ class QueryTest extends \PHPUnit_Framework_TestCase {
         $q = $this->client->query();
         $q->search_query = 'spotify';
         $q->start_time = \DateTime::createFromFormat('Y-m-d H:i:s', '2012-12-28 09:01:22');
-        $this->assertContains('start-date:2012-12-28T09:01:22Z', $q->request_parameters()['q']);
+        $this->assertContains('start-date:2012-12-28T09:01:22', $q->request_parameters()['q']);
     }
 
     function testQueryWithStartTimeInTimezoneOtherThanUtc(){
         $q = $this->client->query();
         $q->search_query = 'spotify';
         $q->start_time = \DateTime::createFromFormat('Y-m-d H:i:s P', '2012-12-28 09:01:22 +01:00');
-        $this->assertContains('start-date:2012-12-28T08:01:22Z', $q->request_parameters()['q']);
+        $this->assertContains('start-date:2012-12-28T08:01:22', $q->request_parameters()['q']);
     }
 
     function testStartTimeUtcConversionDoesntModifyOriginalObject(){
@@ -84,14 +84,14 @@ class QueryTest extends \PHPUnit_Framework_TestCase {
         $q = $this->client->query();
         $q->search_query = 'spotify';
         $q->end_time = \DateTime::createFromFormat('Y-m-d H:i:s', '2012-12-28 09:01:22');
-        $this->assertContains('end-date:2012-12-28T09:01:22Z', $q->request_parameters()['q']);
+        $this->assertContains('end-date:2012-12-28T09:01:22', $q->request_parameters()['q']);
     }
 
     function testQueryWithEndTimeInTimezoneOtherThanUtc(){
         $q = $this->client->query();
         $q->search_query = 'spotify';
         $q->end_time = \DateTime::createFromFormat('Y-m-d H:i:s P', '2012-12-28 09:01:22 +01:00');
-        $this->assertContains('end-date:2012-12-28T08:01:22Z', $q->request_parameters()['q']);
+        $this->assertContains('end-date:2012-12-28T08:01:22', $q->request_parameters()['q']);
     }
 
     function testEndTimeUtcConversionDoesntModifyOriginalObject(){
@@ -106,7 +106,7 @@ class QueryTest extends \PHPUnit_Framework_TestCase {
         $q = $this->client->query();
         $q->search_query = 'spotify';
         $q->end_time = \DateTime::createFromFormat('Y-m-d H:i:s', '2012-12-28 09:01:22');
-        $this->assertContains('end-date%3A2012-12-28T09%3A01%3A22Z', $q->url_parameters());
+        $this->assertContains('end-date%3A2012-12-28T09%3A01%3A22', $q->url_parameters());
     }
 
     function testQueryPattern() {
@@ -121,7 +121,7 @@ class QueryTest extends \PHPUnit_Framework_TestCase {
         \VCR\VCR::getEventDispatcher()->addListener(\VCR\VCREvents::VCR_BEFORE_RECORD, array($this, 'cleanRequest'));
 
         $q = $this->client->query();
-        $q->search_query = 'spotify page-size:10 language:sv';
+        $q->search_query = 'spotify page-size:10 lang:sv';
         $r = $q->execute();
         $this->assertGreaterThan(0, count($r->posts));
 
