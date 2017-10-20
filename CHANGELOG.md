@@ -1,5 +1,16 @@
 # Change Log
 
+## [2.1.1](https://github.com/twingly/twingly-search-api-php/tree/2.1.1) (2017-10-20)
+[Full Changelog](https://github.com/twingly/twingly-search-api-php/compare/2.1.0...2.1.1)
+
+**Implemented enhancements:**
+
+- Add changelog [\#28](https://github.com/twingly/twingly-search-api-php/issues/28)
+
+**Merged pull requests:**
+
+- Revert "Include timezone info for timestamps in query" [\#29](https://github.com/twingly/twingly-search-api-php/pull/29) ([walro](https://github.com/walro))
+
 ## [2.1.0](https://github.com/twingly/twingly-search-api-php/tree/2.1.0) (2017-06-01)
 [Full Changelog](https://github.com/twingly/twingly-search-api-php/compare/2.0.0...2.1.0)
 
