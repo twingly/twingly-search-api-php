@@ -26,5 +26,8 @@
     "psr-4": {
       "Twingly\\": "src"
     }
+  },
+  "scripts": {
+    "test": "phpunit"
   }
 }
