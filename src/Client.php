@@ -50,7 +50,8 @@ class Client {
             'headers' => [
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
-                'User-Agent' => $this->user_agent
+                'User-Agent' => $this->user_agent,
+                'Accept-Encoding' => 'gzip'
             ],
             'verify' => false
         ]);
