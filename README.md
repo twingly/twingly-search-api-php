@@ -52,8 +52,7 @@ To learn more about the capabilities of the API, please read the [Twingly Search
 
 Install PHP and [Composer], on OS X:
 
-    brew tap homebrew/php
-    brew install php70    # or another supported version
+    brew install php@7.1
     brew install composer
 
 Install project dependencies:
