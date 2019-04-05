@@ -28,15 +28,6 @@ class QueryTest extends \PHPUnit_Framework_TestCase {
         $this->assertTrue($q instanceof Query);
     }
 
-    function testQueryWithoutClient() {
-        try {
-            $q = new Query();
-            $this->fail('Should throw Extension');
-        } catch (\Exception $e) {
-            $this->assertTrue($e instanceof \Exception);
-        }
-    }
-
     function testQueryWithoutSearchPattern() {
         try {
             $q = $this->client->query();
