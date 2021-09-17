@@ -46,13 +46,13 @@ To learn more about the capabilities of the API, please read the [Twingly Search
 ## Requirements
 
 * API key, [sign up](https://www.twingly.com/try-for-free) via [twingly.com](https://www.twingly.com/) to get one
-* PHP 5.6, 7.0
+* PHP 7.x, 8.x
 
 ## Development
 
 Install PHP and [Composer], on OS X:
 
-    brew install php@7.1
+    brew install php@7.4
     brew install composer
 
 Install project dependencies:
