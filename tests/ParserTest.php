@@ -12,7 +12,7 @@ use Twingly\Exception;
 use Twingly\Query;
 use Twingly\QueryException;
 
-class ParserTest extends \PHPUnit_Framework_TestCase {
+class ParserTest extends \PHPUnit\Framework\TestCase {
     static function getFixture($fixture_name) {
         $file_path = dirname(__DIR__) . "/tests/fixtures/{$fixture_name}.xml";
         return file_get_contents($file_path);
