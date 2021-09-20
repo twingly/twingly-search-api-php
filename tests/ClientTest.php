@@ -6,15 +6,14 @@ use Twingly\Client;
 use Twingly\AuthException;
 use Twingly\Query;
 
-class ClientTest extends \PHPUnit_Framework_TestCase {
-    public function __construct()
-    {
+class ClientTest extends \PHPUnit\Framework\TestCase {
+    public static function setUpBeforeClass(): void {
         if(!getenv('TWINGLY_SEARCH_KEY')) {
             putenv('TWINGLY_SEARCH_KEY=test-key');
         }
     }
 
-    public function setUp(){
+    public function setUp(): void {
         \VCR\VCR::configure()
             ->setCassettePath('tests/fixtures/vcr_cassettes')
             ->enableRequestMatchers(array('method', 'url'));
@@ -67,7 +66,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase {
             $c->execute_query($q);
             $this->fail('Should throw AuthException.');
         } catch (AuthException $e) {
-            $this->assertContains('Unauthorized', $e->getMessage());
+            $this->assertStringContainsString('Unauthorized', $e->getMessage());
             putenv('TWINGLY_SEARCH_KEY=' . $temp_key);
         }
         \VCR\VCR::turnOff();

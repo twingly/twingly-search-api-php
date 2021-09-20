@@ -10,14 +10,14 @@ use Twingly\Query;
 use Twingly\QueryException;
 
 
-class ExceptionTest extends \PHPUnit_Framework_TestCase {
+class ExceptionTest extends \PHPUnit\Framework\TestCase {
     function testFromApiResponse() {
         try {
             $ex = new Exception();
             $ex->from_api_response(401);
             $this->fail('Should throw AuthException');
         } catch (AuthException $e) {
-            $this->assertContains('401', $e->getMessage());
+            $this->assertStringContainsString('401', $e->getMessage());
         }
 
         try {
@@ -25,7 +25,7 @@ class ExceptionTest extends \PHPUnit_Framework_TestCase {
             $ex->from_api_response(500);
             $this->fail('Should throw ServerException');
         } catch (ServerException $e) {
-            $this->assertContains('500', $e->getMessage());
+            $this->assertStringContainsString('500', $e->getMessage());
         }
 
         try {
@@ -33,7 +33,7 @@ class ExceptionTest extends \PHPUnit_Framework_TestCase {
             $ex->from_api_response(400);
             $this->fail('Should throw QueryException');
         } catch (QueryException $e) {
-            $this->assertContains('400', $e->getMessage());
+            $this->assertStringContainsString('400', $e->getMessage());
         }
     }
 

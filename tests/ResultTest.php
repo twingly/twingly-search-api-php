@@ -12,7 +12,7 @@ use Twingly\Query;
 use Twingly\QueryException;
 
 
-class ResultTest extends \PHPUnit_Framework_TestCase {
+class ResultTest extends \PHPUnit\Framework\TestCase {
     function testResult() {
         $data = file_get_contents(dirname(__DIR__) . '/tests/fixtures/minimal_valid_result.xml');
         $r = (new Parser())->parse($data);
