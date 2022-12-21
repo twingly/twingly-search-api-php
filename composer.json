@@ -29,5 +29,10 @@
   },
   "scripts": {
     "test": "phpunit"
+  },
+  "config": {
+    "allow-plugins": {
+      "symfony/flex": true
+    }
   }
 }
