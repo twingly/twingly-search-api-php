@@ -92,12 +92,12 @@ class Post {
     public $blog_name = '';
     /**
      * @var int the blog's authority/influence
-     *          (https://developer.twingly.com/resources/ranking/#authority)
+     *          (https://app.twingly.com/blog_search?tab=documentation)
      */
     public $authority = 0;
     /**
      * @var int the rank of the blog, based on authority and language
-     *          (https://developer.twingly.com/resources/ranking/#blogrank)
+     *          (https://app.twingly.com/blog_search?tab=documentation)
      */
     public $blog_rank = 0;
 
