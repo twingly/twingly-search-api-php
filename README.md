@@ -2,7 +2,7 @@
 
 [![GitHub Build Status](https://github.com/twingly/twingly-search-api-php/workflows/CI/badge.svg?branch=master)](https://github.com/twingly/twingly-search-api-php/actions)
 
-A PHP library for Twingly's Search API (previously known as Analytics API). Twingly is a blog search service that provides a searchable API known as [Twingly Search API](https://developer.twingly.com/resources/search/).
+A PHP library for Twingly's Search API (previously known as Analytics API). Twingly is a blog search service that provides a searchable API known as [Twingly Search API][Twingly Search API documentation].
 
 ## Installation
 
@@ -41,7 +41,9 @@ phpdoc -d ./src -t ./docs
 
 Example code can be found in [examples/](examples/).
 
-To learn more about the capabilities of the API, please read the [Twingly Search API documentation](https://developer.twingly.com/resources/search/).
+To learn more about the capabilities of the API, please read the [Twingly Search API documentation].
+
+[Twingly Search API documentation]: https://app.twingly.com/blog_search?tab=documentation
 
 ## Requirements
 
